@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment1
+  labels:
+    workload: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:  
+      workload: nginx
+  template:
+    metadata:
+      labels:  
+        workload: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.25.2
+        ports:
+        - containerPort: 80
+
